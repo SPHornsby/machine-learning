@@ -3,6 +3,6 @@ angular
     .directive("topnav", function() {
       return {
         restrict: "E",
-        templateUrl: '/layout/topnav.html'
+        templateUrl: 'app/layout/topnav.html'
       };
     });

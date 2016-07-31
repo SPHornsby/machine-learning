@@ -3,7 +3,7 @@ angular
     .directive("home", function() {
       return {
         restrict: "E",
-        templateUrl: '/components/home/home.html',
+        templateUrl: 'app/components/home/home.html',
         controller: 'HomeController',
         controllerAs: 'home'
       };

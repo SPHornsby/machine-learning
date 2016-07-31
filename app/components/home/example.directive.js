@@ -3,6 +3,6 @@ angular
     .directive("example", function() {
       return {
         restrict: "E",
-        templateUrl: '/components/home/example.html'
+        templateUrl: 'app/components/home/example.html'
       };
     });
