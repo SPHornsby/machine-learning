@@ -1,0 +1,31 @@
+{
+  "name": "machine-learning",
+  "version": "1.0.0",
+  "description": "A website for people who want to learn about Machine Learning in JavaScript",
+  "main": "index.js",
+  "dependencies": {
+    "eslint": "^3.2.0",
+    "chai": "^3.5.0",
+    "express": "^4.14.0",
+    "gulp": "^3.9.1",
+    "gulp-mocha": "^2.2.0",
+    "mongodb": "^2.2.5",
+    "supertest": "^2.0.0"
+  },
+  "devDependencies": {
+    "mocha": "^2.5.3"
+  },
+  "scripts": {
+    "test": "mocha"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/SPHornsby/machine-learning.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/SPHornsby/machine-learning/issues"
+  },
+  "homepage": "https://github.com/SPHornsby/machine-learning#readme"
+}
