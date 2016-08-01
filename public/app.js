@@ -12,6 +12,9 @@ angular.
           when('/', {
             template: '<topbar></topbar><home></home>'
           }).
+          when('/problems', {
+            template: '<topbar></topbar><problems></problems>'
+          }).
           otherwise('/');
       }
     ]);
@@ -64,8 +67,6 @@ angular
     function activate() {
 
     }
-
-
   }
 
 angular
@@ -76,5 +77,33 @@ angular
         templateUrl: 'app/components/home/home.html',
         controller: 'HomeController',
         controllerAs: 'home'
+      };
+    });
+
+angular
+    .module('app')
+    .controller('ProblemsController', ProblemsController);
+
+  ProblemsController.$inject = [];
+
+  function ProblemsController() {
+    var self = this;
+    self.name = "Example Problem";
+    self.body = "Example Body";
+    activate();
+
+    function activate() {
+
+    }
+  }
+
+angular
+    .module("app")
+    .directive("problems", function() {
+      return {
+        restrict: "E",
+        templateUrl: 'app/components/problems/problem.html',
+        controller: 'ProblemsController',
+        controllerAs: 'problem'
       };
     });
