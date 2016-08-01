@@ -11,9 +11,9 @@ angular.
           when('/problems', {
             template: '<topbar></topbar><problems></problems>'
           }).
-          when('/Problems/:problemId', {
-            template: '<problems></problems>'
-
+          when('/tutorial/:tutorialId', {
+            controller: 'TutorialsController',
+            template: '<tutorials></tutorials>'
           }).
           otherwise('/');
       }

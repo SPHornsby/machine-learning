@@ -1,8 +1,8 @@
 angular
-    .module("app")
-    .directive("example", function() {
+    .module('app')
+    .directive('example', function() {
       return {
-        restrict: "E",
+        restrict: 'E',
         templateUrl: 'app/components/home/example.html'
       };
     });
