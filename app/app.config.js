@@ -11,6 +11,10 @@ angular.
           when('/problems', {
             template: '<topbar></topbar><problems></problems>'
           }).
+          when('/Problems/:problemId', {
+            template: '<problems></problems>'
+
+          }).
           otherwise('/');
       }
     ]);
