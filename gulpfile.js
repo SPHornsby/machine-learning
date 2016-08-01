@@ -11,3 +11,9 @@ gulp.task('scripts', function() {
     .pipe(uglify())
     .pipe(gulp.dest('./public/'));
 });
+
+gulp.task('watch', function() {
+  gulp.watch(['./app/app.module.js', './app/app.config.js', './app/**/*.js'], ['scripts']);
+});
+
+gulp.task('default', ['watch', 'scripts']);
