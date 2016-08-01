@@ -8,6 +8,9 @@ angular.
           when('/', {
             template: '<topbar></topbar><home></home>'
           }).
+          when('/problems', {
+            template: '<topbar></topbar><problems></problems>'
+          }).
           otherwise('/');
       }
     ]);
