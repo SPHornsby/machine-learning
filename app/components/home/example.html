@@ -1,6 +1,10 @@
-<div class="col-sm-4 col-sm-offset-1">
-  <div class="example-item">
-    <img ng-src="{{item.url}}" alt="{{item.alt}}" />
-    {{item.name}}
+<div class='row example'>
+  <div class='col-sm-5'>
+    <img class='img-responsive' ng-src='{{item.url}}' alt='{{item.alt}}'>
+  </div>
+  <div class='col-sm-4 col-sm-offeset-2'>
+    <h3>{{item.name}}</h3>
+    <p>{{item.text}}</p>
+    <a class='btn btn-success' href='#!/tutorial/{{item.name}}' role='button'>Get Started!</a>
   </div>
 </div>

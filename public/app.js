@@ -15,6 +15,10 @@ angular.
           when('/problems', {
             template: '<topbar></topbar><problems></problems>'
           }).
+          when('/tutorial/:tutorialId', {
+            controller: 'TutorialsController',
+            template: '<tutorials></tutorials>'
+          }).
           otherwise('/');
       }
     ]);
@@ -39,10 +43,10 @@ angular
     });
 
 angular
-    .module("app")
-    .directive("example", function() {
+    .module('app')
+    .directive('example', function() {
       return {
-        restrict: "E",
+        restrict: 'E',
         templateUrl: 'app/components/home/example.html'
       };
     });
@@ -51,23 +55,31 @@ angular
     .module('app')
     .controller('HomeController', HomeController);
 
-  HomeController.$inject = [];
+HomeController.$inject = ['$http'];
 
-  function HomeController() {
-    var vm = this;
-    vm.list = [
-      {name: "binary", url: "img/binary-sm.jpg", alt:"binary"},
-      {name: "test", url: "img/head-sm.jpg", alt:"head"},
-      {name: "fractal", url: "img/fractal-sm.jpg", alt: "fractal"},
-      {name: "geometry", url: "img/geometry-sm.jpg", alt: "geometry"}
-     ];
-    vm.message = "Examples";
-    activate();
+function HomeController($http) {
+  var vm = this;
+  vm.list = [
+    // {name: 'binary', url: 'img/binary-sm.jpg', alt:'binary'},
+    // {name: 'test', url: 'img/head-sm.jpg', alt:'head'},
+    // {name: 'fractal', url: 'img/fractal-sm.jpg', alt: 'fractal'},
+    // {name: 'geometry', url: 'img/geometry-sm.jpg', alt: 'geometry'}
+   ];
+  vm.message = 'Examples';
+  activate();
 
-    function activate() {
-
-    }
+  function activate() {
+    vm.list = getTopics();
   }
+
+  function getTopics() {
+    return $http.get('http://localhost:8000/problems/all')
+      .then(function(response) {
+        vm.list = response.data;
+      })
+      .catch();
+  }
+}
 
 angular
     .module("app")
@@ -84,18 +96,22 @@ angular
     .module('app')
     .controller('ProblemsController', ProblemsController);
 
-  ProblemsController.$inject = [];
+ProblemsController.$inject = ['$routeParams', '$http'];
 
-  function ProblemsController() {
-    var self = this;
-    self.name = "Example Problem";
-    self.body = "Example Body";
-    activate();
+function ProblemsController($routeParams, $http) {
+  var vm = this;
+  vm.params = $routeParams;
+  vm.name = 'Example Problem';
+  vm.body = 'Example Body';
+  activate();
 
-    function activate() {
+  function activate() {
 
-    }
   }
+  function getProblem() {
+
+  }
+}
 
 angular
     .module("app")
@@ -105,5 +121,47 @@ angular
         templateUrl: 'app/components/problems/problem.html',
         controller: 'ProblemsController',
         controllerAs: 'problem'
+      };
+    });
+
+angular
+    .module('app')
+    .controller('TutorialsController', TutorialsController);
+
+TutorialsController.$inject = ['$routeParams', '$http'];
+
+function TutorialsController($routeParams, $http) {
+  var vm = this;
+  vm.params = $routeParams.tutorialId;
+  vm.message = 'Message';
+  vm.title = 'Example Problem Title';
+
+  var url = 'http://localhost:8000/problems/' + vm.params;
+  activate();
+
+  function activate() {
+    getFractal();
+  }
+
+  function getFractal() {
+    return $http.get(url)
+      .then(function(response) {
+        var data = response.data[0];
+        vm.message = data.text;
+        vm.title = data.name;
+        vm.img = data.url;
+      })
+      .catch();
+  }
+}
+
+angular
+    .module('app')
+    .directive('tutorials', function() {
+      return {
+        restrict: 'E',
+        templateUrl: 'app/components/tutorials/tutorials.html',
+        controller: 'TutorialsController',
+        controllerAs: 'tutorial'
       };
     });
