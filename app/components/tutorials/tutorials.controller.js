@@ -7,10 +7,9 @@ TutorialsController.$inject = ['$routeParams', '$http'];
 function TutorialsController($routeParams, $http) {
   var vm = this;
   vm.params = $routeParams.tutorialId;
-  vm.message = 'Message';
-  vm.title = 'Example Problem Title';
 
   var url = '/tutorials/' + vm.params;
+  vm.run = run;
   activate();
 
   function activate() {
@@ -28,5 +27,9 @@ function TutorialsController($routeParams, $http) {
         vm.scripts = data.scripts;
       })
       .catch();
+  }
+  function run() {
+    var script = vm.scripts;
+    eval(script);
   }
 }

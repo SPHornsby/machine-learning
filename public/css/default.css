@@ -4,3 +4,7 @@ img {
 .example {
   margin-bottom: 10px;
 }
+pre {
+  white-space: pre-wrap;
+  word-wrap: break-word;
+}

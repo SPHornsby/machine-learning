@@ -1,17 +1,27 @@
-<div class='tutorials'>
+<div class='tutorials col-sm-8 col-sm-offset-2'>
   <img ng-src='{{tutorial.img}}' alt='' />
   <h2>{{tutorial.title}}</h2>
   <p>
     {{tutorial.intro}}
   </p>
   <div ng-repeat='item in tutorial.content'>
-    {{item.image}}
-    {{item.text}}
+    <div class="row">
+      <div class="col-sm-6">
+        <pre>
+          {{item.snip}}
+        </pre>
+      </div>
+      <div class="col-sm-5 col-sm-offset-1">
+        <p>
+          {{item.text}}
+        </p>
+      </div>
+    </div>
   </div>
   <p>
     {{tutorial.demo}}
   </p>
-  <p>
-    {{tutorial.scripts}}
-  </p>
+
+  <canvas id="canvas" width="400" height="400"></canvas>
+  <button type="button" name="button" ng-click="tutorial.run()">Run</button>
 </div>
