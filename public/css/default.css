@@ -5,6 +5,7 @@ img {
   margin-bottom: 10px;
 }
 pre {
+  background-color: #272822;
   white-space: pre-wrap;
   word-wrap: break-word;
 }

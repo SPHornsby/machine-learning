@@ -6,14 +6,14 @@ angular.
 
         $routeProvider.
           when('/', {
-            template: '<topbar></topbar><home></home>'
+            template: '<home></home>'
           }).
           when('/problems', {
-            template: '<topbar></topbar><problems></problems>'
+            template: '<problems></problems>'
           }).
           when('/tutorial/:tutorialId', {
             controller: 'TutorialsController',
-            template: '<topbar></topbar><tutorials></tutorials>'
+            template: '<tutorials></tutorials>'
           }).
           otherwise('/');
       }

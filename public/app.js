@@ -10,14 +10,14 @@ angular.
 
         $routeProvider.
           when('/', {
-            template: '<topbar></topbar><home></home>'
+            template: '<home></home>'
           }).
           when('/problems', {
-            template: '<topbar></topbar><problems></problems>'
+            template: '<problems></problems>'
           }).
           when('/tutorial/:tutorialId', {
             controller: 'TutorialsController',
-            template: '<topbar></topbar><tutorials></tutorials>'
+            template: '<tutorials></tutorials>'
           }).
           otherwise('/');
       }
@@ -39,6 +39,38 @@ angular
       return {
         restrict: "E",
         templateUrl: 'app/layout/topnav.html'
+      };
+    });
+
+angular
+    .module('app')
+    .controller('ProblemsController', ProblemsController);
+
+ProblemsController.$inject = ['$routeParams', '$http'];
+
+function ProblemsController($routeParams, $http) {
+  var vm = this;
+  vm.params = $routeParams;
+  vm.name = 'Example Problem';
+  vm.body = 'Example Body';
+  activate();
+
+  function activate() {
+
+  }
+  function getProblem() {
+
+  }
+}
+
+angular
+    .module("app")
+    .directive("problems", function() {
+      return {
+        restrict: "E",
+        templateUrl: 'app/components/problems/problem.html',
+        controller: 'ProblemsController',
+        controllerAs: 'problem'
       };
     });
 
@@ -84,38 +116,6 @@ angular
         templateUrl: 'app/components/home/home.html',
         controller: 'HomeController',
         controllerAs: 'home'
-      };
-    });
-
-angular
-    .module('app')
-    .controller('ProblemsController', ProblemsController);
-
-ProblemsController.$inject = ['$routeParams', '$http'];
-
-function ProblemsController($routeParams, $http) {
-  var vm = this;
-  vm.params = $routeParams;
-  vm.name = 'Example Problem';
-  vm.body = 'Example Body';
-  activate();
-
-  function activate() {
-
-  }
-  function getProblem() {
-
-  }
-}
-
-angular
-    .module("app")
-    .directive("problems", function() {
-      return {
-        restrict: "E",
-        templateUrl: 'app/components/problems/problem.html',
-        controller: 'ProblemsController',
-        controllerAs: 'problem'
       };
     });
 
