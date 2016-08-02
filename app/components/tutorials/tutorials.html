@@ -1,5 +1,17 @@
 <div class='tutorials'>
   <img ng-src='{{tutorial.img}}' alt='' />
   <h2>{{tutorial.title}}</h2>
-  {{tutorial.message}}
+  <p>
+    {{tutorial.intro}}
+  </p>
+  <div ng-repeat='item in tutorial.content'>
+    {{item.image}}
+    {{item.text}}
+  </div>
+  <p>
+    {{tutorial.demo}}
+  </p>
+  <p>
+    {{tutorial.scripts}}
+  </p>
 </div>

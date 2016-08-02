@@ -131,7 +131,7 @@ function TutorialsController($routeParams, $http) {
   vm.message = 'Message';
   vm.title = 'Example Problem Title';
 
-  var url = '/examples/' + vm.params;
+  var url = '/tutorials/' + vm.params;
   activate();
 
   function activate() {
@@ -142,9 +142,11 @@ function TutorialsController($routeParams, $http) {
     return $http.get(url)
       .then(function(response) {
         var data = response.data[0];
-        vm.message = data.text;
         vm.title = data.name;
-        vm.img = data.url;
+        vm.intro = data.intro;
+        vm.content = data.content;
+        vm.demo = data.demo;
+        vm.scripts = data.scripts;
       })
       .catch();
   }
