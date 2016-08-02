@@ -10,7 +10,7 @@ function TutorialsController($routeParams, $http) {
   vm.message = 'Message';
   vm.title = 'Example Problem Title';
 
-  var url = 'http://localhost:8000/problems/' + vm.params;
+  var url = '/examples/' + vm.params;
   activate();
 
   function activate() {

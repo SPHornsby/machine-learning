@@ -1,10 +1,10 @@
-var problems = require('express').Router();
+var examples = require('express').Router();
 var MongoClient = require('mongodb').MongoClient;
 
 var user = process.env.MDB;
 var pw = process.env.MDBPW;
 var url = 'mongodb://' + user + ':' + pw + '@ds029745.mlab.com:29745/heroku_8xrhcd53';
-problems.get('/all', function(req, res) {
+examples.get('/all', function(req, res) {
   MongoClient.connect(url, function(err, db) {
     if (err) {
       db.close();
@@ -17,8 +17,8 @@ problems.get('/all', function(req, res) {
   });
 });
 
-problems.get('/:problemId', function(req, res) {
-  var id = req.params.problemId;
+examples.get('/:exampleId', function(req, res) {
+  var id = req.params.exampleId;
   MongoClient.connect(url, function(err, db) {
     if (err) {
       db.close();
@@ -32,17 +32,17 @@ problems.get('/:problemId', function(req, res) {
 });
 
 function getAll(db, callback) {
-  var collection = db.collection('problems');
+  var collection = db.collection('examples');
   collection.find({}).toArray(function(err, docs) {
     callback(docs);
   });
 }
 
 function getById(id, db, callback) {
-  var collection = db.collection('problems');
+  var collection = db.collection('examples');
   collection.find({name: id}).toArray(function(err, doc) {
     callback(doc);
   });
 }
 
-module.exports = problems;
+module.exports = examples;

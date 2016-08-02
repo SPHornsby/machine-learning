@@ -68,7 +68,7 @@ function HomeController($http) {
   }
 
   function getTopics() {
-    return $http.get('/problems/all')
+    return $http.get('/examples/all')
       .then(function(response) {
         vm.list = response.data;
       })
@@ -131,7 +131,7 @@ function TutorialsController($routeParams, $http) {
   vm.message = 'Message';
   vm.title = 'Example Problem Title';
 
-  var url = 'http://localhost:8000/problems/' + vm.params;
+  var url = '/examples/' + vm.params;
   activate();
 
   function activate() {

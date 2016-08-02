@@ -15,7 +15,7 @@ function HomeController($http) {
   }
 
   function getTopics() {
-    return $http.get('/problems/all')
+    return $http.get('/examples/all')
       .then(function(response) {
         vm.list = response.data;
       })
