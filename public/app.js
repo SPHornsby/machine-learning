@@ -44,6 +44,51 @@ angular
 
 angular
     .module('app')
+    .directive('example', function() {
+      return {
+        restrict: 'E',
+        templateUrl: 'app/components/home/example.html'
+      };
+    });
+
+angular
+    .module('app')
+    .controller('HomeController', HomeController);
+
+HomeController.$inject = ['$http'];
+
+function HomeController($http) {
+  var vm = this;
+  vm.list = [];
+  vm.message = 'Examples';
+  activate();
+
+  function activate() {
+    vm.list = getTopics();
+  }
+
+  function getTopics() {
+    return $http.get('/problems/all')
+      .then(function(response) {
+        vm.list = response.data;
+      })
+      .catch();
+  }
+}
+
+angular
+    .module("app")
+    .directive("home", function() {
+      return {
+        restrict: "E",
+        templateUrl: 'app/components/home/home.html',
+        controller: 'HomeController',
+        controllerAs: 'home'
+      };
+    });
+
+angular
+    .module('app')
     .controller('ProblemsController', ProblemsController);
 
 ProblemsController.$inject = ['$routeParams', '$http'];
@@ -113,50 +158,5 @@ angular
         templateUrl: 'app/components/tutorials/tutorials.html',
         controller: 'TutorialsController',
         controllerAs: 'tutorial'
-      };
-    });
-
-angular
-    .module('app')
-    .directive('example', function() {
-      return {
-        restrict: 'E',
-        templateUrl: 'app/components/home/example.html'
-      };
-    });
-
-angular
-    .module('app')
-    .controller('HomeController', HomeController);
-
-HomeController.$inject = ['$http'];
-
-function HomeController($http) {
-  var vm = this;
-  vm.list = [];
-  vm.message = 'Examples';
-  activate();
-
-  function activate() {
-    vm.list = getTopics();
-  }
-
-  function getTopics() {
-    return $http.get('/problems/all')
-      .then(function(response) {
-        vm.list = response.data;
-      })
-      .catch();
-  }
-}
-
-angular
-    .module("app")
-    .directive("home", function() {
-      return {
-        restrict: "E",
-        templateUrl: 'app/components/home/home.html',
-        controller: 'HomeController',
-        controllerAs: 'home'
       };
     });
