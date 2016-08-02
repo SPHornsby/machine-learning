@@ -17,7 +17,7 @@ angular.
           }).
           when('/tutorial/:tutorialId', {
             controller: 'TutorialsController',
-            template: '<tutorials></tutorials>'
+            template: '<topbar></topbar><tutorials></tutorials>'
           }).
           otherwise('/');
       }
